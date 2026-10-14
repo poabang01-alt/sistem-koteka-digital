@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#061b2f">
+<title>Admin Workspace • Koteka Digital</title>
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="stylesheet" href="./styles.css?v=20261014-theme">
+<script src="./fa-icons.js?v=20261014-theme" defer></script>
+<script src="./seed.js" defer></script>
+<script src="./pdf.js" defer></script>
+<script src="../assets/koteka-workspace-sync.js" defer></script>
+<script src="./app.js?v=20261014-consultation-2" defer></script>
+</head>
+<body>
+<section id="loginScreen" class="login-layout" aria-label="Masuk Koteka Workspace">
+ <div class="login-feature">
+  <a href="../" class="brand brand-login"><img src="../img/koteka-digital-logo-jayapura-papua.png" alt="Koteka Digital"><span>KOTEKA <b>DIGITAL</b><small>ADMIN WORKSPACE</small></span></a>
+  <div class="login-hero"><span class="eyebrow-light">PLATFORM PENGELOLAAN KONTEN</span><h1>Kelola semuanya.<br><em>Dalam satu tempat.</em></h1><p>Dashboard modern untuk layanan, portofolio, artikel, pricing, dan analisis aktivitas Koteka Digital.</p><div class="login-stats"><span><b>12</b> Modul terintegrasi</span><span><b>12</b> Area kelola</span></div></div>
+  <div class="login-caption">KOTEKA DIGITAL · JAYAPURA, PAPUA <span>2026</span></div>
+ </div>
+ <div class="login-form-area"><form id="loginForm" class="login-panel" autocomplete="off">
+  <div class="login-eyebrow"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> KOTEKA WORKSPACE</div>
+  <h2>Selamat datang kembali</h2><p>Masuk ke ruang kerja administrator.</p>
+  <label for="loginEmail">Email administrator</label><input id="loginEmail" name="email" type="email" placeholder="admin@kotekadigital.com" required autocomplete="username">
+  <label for="loginPassword">Kata sandi</label><div class="password-wrap"><input id="loginPassword" name="password" type="password" placeholder="Masukkan kata sandi" required autocomplete="current-password"><button type="button" id="togglePassword" aria-label="Tampilkan kata sandi">Lihat</button></div>
+  <p id="loginError" class="form-error" role="alert" hidden></p><button type="submit" class="btn btn-primary login-submit">Masuk ke Dashboard <span aria-hidden="true">→</span></button>
+  <div class="login-note">Akses administrator khusus untuk pengelolaan konten. Sistem ini belum memiliki autentikasi server; jangan gunakan di internet sebelum integrasi backend.</div>
+ </form></div>
+</section>
+<div id="appShell" class="app-shell" hidden>
+ <aside id="sidebar" class="sidebar" aria-label="Navigasi pengelolaan">
+  <div class="sidebar-brand"><a class="brand" href="#dashboard" data-route="dashboard" aria-label="Koteka Workspace"><img src="../img/koteka-digital-logo-jayapura-papua.png" alt=""><span>KOTEKA <b>DIGITAL</b><small>WORKSPACE</small></span></a><button id="sidebarToggle" class="icon-button workspace-toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Tutup sidebar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div>
+  <nav id="sidebarNav" aria-label="Menu Koteka Workspace"></nav>
+  <div class="sidebar-bottom"><button id="logoutButton" class="logout-button" type="button"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i><span>Keluar dari akun</span><i class="fa-solid fa-arrow-right logout-arrow" aria-hidden="true"></i></button></div>
+ </aside>
+ <div id="sidebarOverlay" class="sidebar-overlay" hidden></div>
+ <div class="work-area">
+  <header class="topbar"><div class="top-left"><div class="breadcrumb"><span>Koteka Workspace</span><span class="crumb-sep">/</span><strong id="breadcrumbCurrent">Dashboard</strong></div></div>
+    <div class="workspace-search" id="searchArea"><i class="fa-solid fa-magnifying-glass search-symbol" aria-hidden="true"></i><input id="globalSearch" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="globalSearchResults" placeholder="Cari menu, layanan, artikel, konten..." aria-label="Cari semua data Workspace" autocomplete="off"><kbd class="search-hotkey" aria-hidden="true">Ctrl K</kbd><div id="globalSearchResults" class="global-results" role="listbox" hidden></div></div>
+    <div class="top-actions"><span id="liveClock" class="header-clock"></span><button id="themeButton" type="button" class="icon-button kd-header-tool" title="Gunakan mode gelap" aria-label="Gunakan mode gelap" aria-pressed="false"></button><button id="notificationButton" type="button" class="icon-button kd-header-tool kd-notification-button" aria-label="Buka notifikasi konsultasi" title="Notifikasi pesan masuk"><i class="fa-solid fa-bell" aria-hidden="true"></i><span class="kd-notification-count" data-inbox-badge hidden></span></button><a class="visit-site" href="../" target="_blank" rel="noopener noreferrer" aria-label="Lihat website publik"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="visit-label"> Website</span></a><div class="profile-wrap"><button id="profileButton" class="profile-button" type="button" aria-expanded="false" aria-controls="profileMenu" aria-label="Buka menu profil administrator"><span class="avatar" id="headerAvatar">KD</span><span class="profile-header-copy"><strong id="profileHeaderName">Administrator</strong><small>Pengelola Konten</small></span><i class="fa-solid fa-chevron-down profile-caret" aria-hidden="true"></i></button><div id="profileMenu" class="profile-menu" hidden><div class="profile-menu-head"><span class="avatar" id="menuAvatar">KD</span><div><strong id="menuProfileName">Administrator</strong><small id="menuProfileEmail">admin@kotekadigital.com</small></div></div><button type="button" id="viewProfile"><i class="fa-solid fa-id-card" aria-hidden="true"></i> Lihat Profil</button><button type="button" id="editProfile"><i class="fa-solid fa-user-pen" aria-hidden="true"></i> Edit Profil & Foto</button><button type="button" id="profileLogout" class="profile-logout"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Logout</button></div></div></div>
+  </header>
+  <main id="mainContent" tabindex="-1"></main>
+  <footer class="app-footer">© 2026 Koteka Digital <span>Koteka Workspace · Pengelolaan konten</span></footer>
+ </div>
+</div>
+<div id="dialogBackdrop" class="modal-backdrop" hidden><section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="dialog-head"><div><span class="overline">CONTENT EDITOR</span><h2 id="dialogTitle"></h2></div><button id="dialogClose" class="icon-button" aria-label="Tutup form">×</button></div><form id="editForm" class="dialog-body"></form></section></div>
+<div id="confirmBackdrop" class="modal-backdrop confirm-layer" hidden><section class="confirm-panel" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle"><div class="warning-circle">!</div><h2 id="confirmTitle">Hapus data?</h2><p id="confirmText">Data ini akan dihapus dari Workspace.</p><div class="confirm-actions"><button id="cancelDelete" class="btn btn-light">Batal</button><button id="approveDelete" class="btn btn-danger">Ya, hapus data</button></div></section></div>
+<div id="profileBackdrop" class="modal-backdrop" hidden><section class="dialog profile-dialog" role="dialog" aria-modal="true" aria-labelledby="profileDialogTitle"><div class="dialog-head"><div><span class="overline">KOTEKA DIGITAL</span><h2 id="profileDialogTitle">Profil Administrator</h2></div><button id="profileDialogClose" type="button" class="icon-button" aria-label="Tutup profil"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div><div class="profile-body" id="profileView"></div><form id="profileEditForm" class="profile-edit-form" hidden><div class="profile-picture-edit"><span class="avatar avatar-large" id="profileEditAvatar">KD</span><div><label class="btn btn-light" for="profilePhoto"><i class="fa-solid fa-camera" aria-hidden="true"></i> Ganti foto</label><input id="profilePhoto" type="file" accept="image/png,image/jpeg,image/webp" hidden><p>JPG, PNG atau WebP • maksimum 5 MB</p><button id="profileRemovePhoto" type="button" class="small-link">Hapus foto</button></div></div><div class="profile-form-grid"><label>Nama lengkap<input id="profileName" name="name" type="text" required maxlength="80"></label><label>Email<input id="profileEmail" name="email" type="email" required maxlength="120"></label><label>No. telepon<input id="profilePhone" name="phone" type="tel" maxlength="40"></label><label>Jabatan<input id="profileRole" name="role" type="text" maxlength="65"></label><label class="full">Bio singkat<textarea id="profileBio" name="bio" rows="3" maxlength="300"></textarea></label></div><div class="dialog-actions"><button id="profileCancelEdit" type="button" class="btn btn-light">Batal</button><button type="submit" class="btn btn-primary"><i class="fa-solid fa-check" aria-hidden="true"></i> Simpan Profil</button></div></form></section></div>
+<input id="trafficImportFile" type="file" accept=".csv,.json,text/csv,application/json" hidden aria-label="Impor data analitik">
+<div id="toastContainer" class="toast-container" role="status" aria-live="polite"></div>
+</body>
+</html>

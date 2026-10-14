@@ -1,0 +1,7 @@
+{
+  "name": "koteka-digital-audit9",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Koteka Digital static website with Vercel consultation inbox functions"
+}

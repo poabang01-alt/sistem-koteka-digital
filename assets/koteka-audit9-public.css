@@ -1,0 +1,36 @@
+/* Audit 9: public controls, mobile spacing and scroll-ready pricing carousel. */
+.kd-pricing-carousel{max-width:100%;min-width:0;position:relative;margin-top:14px}
+.kd-pricing-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;color:#416282;font:500 13px/1.6 Poppins,system-ui,sans-serif}
+.kd-pricing-arrows{display:flex;gap:8px;flex-shrink:0}
+.kd-price-arrow{width:44px;height:44px;border-radius:14px;border:1px solid #9cc4fa;background:#edf5ff;color:#1461cb;display:inline-grid;place-items:center;cursor:pointer;box-shadow:0 5px 17px rgba(24,96,184,.09);transition:background-color .2s,color .2s,box-shadow .2s,transform .2s}
+.kd-price-arrow:hover,.kd-price-arrow:focus-visible{background:#2373f4;color:#fff;box-shadow:0 7px 20px rgba(35,115,244,.22)}
+.kd-price-arrow:active{transform:scale(.94)}
+.kd-pricing-viewport{overflow-x:auto;overflow-y:clip;max-width:100%;-webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain;scrollbar-width:none;touch-action:pan-x pan-y}
+.kd-pricing-viewport::-webkit-scrollbar{display:none}
+.kd-pricing-viewport .pricing-package-grid{display:flex!important;flex-wrap:nowrap!important;align-items:stretch!important;justify-content:flex-start!important;width:max-content!important;min-width:100%!important;max-width:none!important;gap:22px!important;padding:8px 6px 30px!important;grid-template-columns:none!important}
+.kd-pricing-viewport .pricing-card-reference{flex:0 0 clamp(280px,calc((100vw - 170px)/3),370px)!important;width:clamp(280px,calc((100vw - 170px)/3),370px)!important;min-width:0!important;max-width:none!important;margin:0!important;align-self:stretch}
+.kd-pricing-viewport .pricing-card-reference .pricing-actions{margin-top:auto}
+@media (min-width:1100px){.site-header .nav-shell{gap:12px}}
+@media (max-width:1050px){.kd-pricing-viewport .pricing-card-reference{flex-basis:min(345px,80vw)!important;width:min(345px,80vw)!important}}
+@media (max-width:700px){
+ html,body{max-width:100%;overflow-x:clip}
+ #root{min-width:0;overflow-x:clip}
+ .site-header .nav-shell{gap:8px;min-width:0;padding-left:15px;padding-right:15px}
+ .site-header .app-install-button{display:none!important}
+ .site-header .hamburger{flex-shrink:0}
+ .nav-menu-mobile{max-width:min(360px,94vw)!important}
+ .pricing-section .container{padding-left:16px;padding-right:16px;min-width:0}
+ .kd-pricing-controls{font-size:11px;line-height:1.5;gap:8px}
+ .kd-price-arrow{width:42px;height:42px;border-radius:12px}
+ .kd-pricing-viewport .pricing-package-grid{gap:16px!important}
+ .kd-pricing-viewport .pricing-card-reference{flex-basis:min(330px,84vw)!important;width:min(330px,84vw)!important}
+ section[id]{scroll-margin-top:94px}
+ .contact-form-grid{min-width:0}
+ .contact-field input,.contact-field select,.contact-field textarea{min-width:0;max-width:100%;font-size:16px}
+ .pricing-comparison-card,.contact-card{max-width:100%;min-width:0}
+}
+@media (max-width:380px){.site-header .nav-shell{gap:6px;padding-inline:10px}.kd-pricing-viewport .pricing-card-reference{flex-basis:84vw!important;width:84vw!important}}
+@media(prefers-reduced-motion:reduce){.kd-price-arrow{transition:none!important}.kd-pricing-viewport{scroll-behavior:auto}}
+.contact-form .form-status.warning{color:#ffe49b;background:#59461b;border:1px solid #ba943e;border-radius:12px;padding:12px 14px;line-height:1.7}
+.contact-form .form-status.success{color:#bff4d5;background:#123e32;border:1px solid #428867;border-radius:12px;padding:12px 14px;line-height:1.7}
+.contact-form .form-status.error{color:#ffd1d7;background:#502635;border:1px solid #b16a7c;border-radius:12px;padding:12px 14px;line-height:1.7}
