@@ -1,4 +1,6 @@
 import './koteka-workspace-sync.js';
+import { redirectErrorPreview } from './public-entry.js';
+const previewRedirected = redirectErrorPreview(window.location, new URL('../', import.meta.url).href);
 window.KotekaWorkspace.startTracking();
 const __vite__mapDeps = (
   i,
@@ -102,6 +104,7 @@ var e = `modulepreload`,
   },
   i;
 function a() {
+  if (previewRedirected) return Promise.resolve();
   return (
     (i ||= r(
       async () => {
@@ -117,7 +120,7 @@ function a() {
   window.addEventListener(
     `load`,
     () => {
-      navigator.serviceWorker.register(`/sistem-koteka-digital/sw.js`, { scope: `/sistem-koteka-digital/` }).catch(() => {});
+      navigator.serviceWorker.register(new URL('../sw.js', import.meta.url).href).catch(() => {});
     },
     { once: !0 }
   ),

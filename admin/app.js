@@ -268,7 +268,7 @@ function bindEvents(){
  window.addEventListener('koteka:consultation-stored',()=>loadInbox(true));
  document.addEventListener('submit',ev=>{if(ev.target.id==='serverInboxLogin')serverInboxLogin(ev)});
  document.addEventListener('click',ev=>{const target=ev.target.closest('[data-message-id]');if(target)markInboxRead(target.dataset.messageId)});
- $('#togglePassword').addEventListener('click',()=>{let i=$('#loginPassword');i.type=i.type==='password'?'text':'password';$('#togglePassword').textContent=i.type==='password'?'Lihat':'Tutup'});
+ $('#togglePassword').addEventListener('click',()=>{let i=$('#loginPassword');i.type=i.type==='password'?'text':'password';let button=$('#togglePassword');button.textContent=i.type==='password'?'Lihat':'Tutup';button.setAttribute('aria-label',i.type==='password'?'Tampilkan kata sandi':'Sembunyikan kata sandi');button.setAttribute('aria-pressed',String(i.type==='text'))});
  $('#logoutButton').addEventListener('click',()=>{fetch('/api/admin-session',{method:'DELETE',credentials:'same-origin'}).catch(()=>{});writeLog('system','Autentikasi','Logout administrator');sessionStorage.removeItem(AUTH);$('#loginPassword').value='';authView()});
  $('#sidebarToggle').addEventListener('click',toggleSidebar);
  $('#sidebarOverlay').addEventListener('click',closeMobileSidebar);

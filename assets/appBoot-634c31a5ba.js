@@ -29,6 +29,7 @@ const __vite__mapDeps = (
 import { n as e, r as t, t as n } from './jsx-runtime-BkSabwWG.js';
 import { t as r } from './index-B3BNhf1J.js';
 import { t as i } from './react-DHmoMYoq.js';
+import { publicPath } from './public-entry.js';
 var a = e((e) => {
     function t(e, t) {
       var n = e.length;
@@ -11086,7 +11087,7 @@ Error generating stack: ` +
       result: `Presentasi bisnis terasa lebih rapi`,
       period: `Klien aktif`,
       quote: `Website yang dibuat terasa lebih profesional, cepat diakses, dan membuat bisnis saya lebih mudah dipresentasikan ke calon pelanggan.`,
-      image: `/sistem-koteka-digital/img/owner.jpg`,
+      image: `/img/owner.jpg`,
       imageWidth: 200,
       imageHeight: 200,
     },
@@ -11097,7 +11098,7 @@ Error generating stack: ` +
       result: `CTA dan alur konten lebih meyakinkan`,
       period: `Project selesai`,
       quote: `Komunikasi jelas, tampilannya rapi, dan hasil akhirnya sesuai kebutuhan. Bagian CTA dan alur kontennya terasa lebih meyakinkan.`,
-      image: `/sistem-koteka-digital/img/abangpo.jpg`,
+      image: `/img/abangpo.jpg`,
       imageWidth: 200,
       imageHeight: 200,
     },
@@ -11108,12 +11109,12 @@ Error generating stack: ` +
       result: `Profil jasa lebih mudah dijelaskan`,
       period: `Kolaborasi branding`,
       quote: `Portofolio jadi lebih enak dilihat dan lebih gampang menjelaskan layanan saya ke orang baru. Ini sangat membantu saat promosi.`,
-      image: `/sistem-koteka-digital/img/rival.jpg`,
+      image: `/img/rival.jpg`,
       imageWidth: 200,
       imageHeight: 200,
     },
   ],
-  g = `/sistem-koteka-digital/img/koteka-digital-logo-jayapura-papua.png`,
+  g = `/img/koteka-digital-logo-jayapura-papua.png`,
   _ = [
     { label: `Beranda`, href: `/`, icon: `fa-solid fa-house` },
     { label: `Tentang Kami`, href: `#about`, icon: `fa-solid fa-circle-info` },
@@ -11195,15 +11196,15 @@ Error generating stack: ` +
   w = n(),
   te = [
     {
-      src: `/sistem-koteka-digital/img/hero/hero-frontend-stack.webp`,
+      src: `/img/hero/hero-frontend-stack.webp`,
       alt: `Ilustrasi frontend development dengan HTML CSS JavaScript dan React`,
     },
     {
-      src: `/sistem-koteka-digital/img/hero/hero-backend-architecture.webp`,
+      src: `/img/hero/hero-backend-architecture.webp`,
       alt: `Ilustrasi backend PHP Laravel API database dan autentikasi`,
     },
     {
-      src: `/sistem-koteka-digital/img/hero/hero-go-live-deployment.webp`,
+      src: `/img/hero/hero-go-live-deployment.webp`,
       alt: `Ilustrasi deployment website HTTPS server dan proses go live`,
     },
   ];
@@ -11632,11 +11633,11 @@ function ae({
                   children: [
                     (0, w.jsx)(`source`, {
                       type: `image/avif`,
-                      srcSet: `/sistem-koteka-digital/img/optimized/koteka-digital-logo-jayapura-papua.avif`,
+                      srcSet: `/img/optimized/koteka-digital-logo-jayapura-papua.avif`,
                     }),
                     (0, w.jsx)(`source`, {
                       type: `image/webp`,
-                      srcSet: `/sistem-koteka-digital/img/optimized/koteka-digital-logo-jayapura-papua.webp`,
+                      srcSet: `/img/optimized/koteka-digital-logo-jayapura-papua.webp`,
                     }),
                     (0, w.jsx)(`img`, {
                       src: e,
@@ -11675,7 +11676,7 @@ function ae({
                   'aria-label': `Buka WhatsApp untuk konsultasi gratis`,
                   children: [
                     (0, w.jsx)(`img`, {
-                      src: `/sistem-koteka-digital/img/optimized/wa-64.png`,
+                      src: `/img/optimized/wa-64.png`,
                       alt: ``,
                       'aria-hidden': `true`,
                       loading: `lazy`,
@@ -11875,7 +11876,7 @@ function oe(e, t = !1) {
 }
 function se({ trackedSectionIds: e, headerOffsetRef: t, initialReadyRef: n }) {
   let r =
-      (typeof window < `u` && window.location.pathname === `/` && window.location.hash.slice(1)) ||
+      (typeof window < `u` && publicPath(window.location.pathname) === `/` && window.location.hash.slice(1)) ||
       `home`,
     [i, a] = (0, d.useState)(r),
     o = (0, d.useRef)(r),
@@ -12396,7 +12397,7 @@ function fe(e) {
     }, [g]),
     ie = (0, d.useCallback)(
       (e, t) => {
-        if (((f.current += 1), t === `/` && window.location.pathname === `/`)) {
+        if (((f.current += 1), t === `/` && publicPath(window.location.pathname) === `/`)) {
           (e.preventDefault(), g(), ne(`home`));
           return;
         }
@@ -12404,8 +12405,8 @@ function fe(e) {
           g();
           return;
         }
-        if (window.location.pathname !== `/`) {
-          (e.preventDefault(), g(), window.location.assign(`/sistem-koteka-digital${t.startsWith(`/`) ? t : `/${t}`}`));
+        if (publicPath(window.location.pathname) !== `/`) {
+          (e.preventDefault(), g(), window.location.assign(`${t.startsWith(`/`) ? t : `/${t}`}`));
           return;
         }
         (e.preventDefault(), ne(t.slice(1)));
@@ -12472,7 +12473,7 @@ function fe(e) {
     }, [te, ee]),
     O = (0, d.useCallback)(
       (e) => {
-        let t = window.location.pathname.replace(/^\/sistem-koteka-digital(?=\/|$)/, ``).replace(/\/$/, ``) || `/`,
+        let t = publicPath(window.location.pathname),
           [n, r] = e.href.split(`#`),
           i = n.replace(/\/$/, ``) || `/`,
           a = t === `/`,
@@ -12499,7 +12500,7 @@ function fe(e) {
     ),
     k = (0, d.useCallback)(
       (e) => {
-        let t = window.location.pathname.replace(/^\/sistem-koteka-digital(?=\/|$)/, ``).replace(/\/$/, ``) || `/`;
+        let t = publicPath(window.location.pathname);
         return e === `home`
           ? t === `/` && m === `home`
           : e === `menu`
@@ -12518,10 +12519,10 @@ function fe(e) {
           (te(!1), b());
           return;
         }
-        let t = window.location.pathname.replace(/^\/sistem-koteka-digital(?=\/|$)/, ``).replace(/\/$/, ``) || `/`;
+        let t = publicPath(window.location.pathname);
         if (e.key === `home`) {
           if (t !== `/`) {
-            window.location.assign(`/sistem-koteka-digital/`);
+            window.location.assign(`/`);
             return;
           }
           ne(`home`);
@@ -12529,12 +12530,12 @@ function fe(e) {
         }
         if (e.key === `services` && t !== `/`) {
           (window.scrollTo({ top: 0, left: 0, behavior: `auto` }),
-            window.location.assign(`/sistem-koteka-digital/layanan/`));
+            window.location.assign(`/layanan/`));
           return;
         }
         if (e.href.startsWith(`#`) && t !== `/`) {
           (window.scrollTo({ top: 0, left: 0, behavior: `auto` }),
-            window.location.assign(`/sistem-koteka-digital/${e.href}`));
+            window.location.assign(`/${e.href}`));
           return;
         }
         ne(e.href.slice(1));
@@ -12587,7 +12588,7 @@ function fe(e) {
         let t = window.location.hash?.replace(`#`, ``);
         if (!t) {
           ((u.current = !1),
-            window.location.pathname === `/` &&
+            publicPath(window.location.pathname) === `/` &&
               e?.type !== `kotekadigital:section-rendered` &&
               h(`home`));
           return;
@@ -12702,7 +12703,7 @@ function fe(e) {
   );
 }
 var D = `https://kotekadigital.com`,
-  pe = `${D}/sistem-koteka-digital/img/optimized/portofolio-koteka-digital-home.jpg`,
+  pe = `${D}/img/optimized/portofolio-koteka-digital-home.jpg`,
   O = {
     '/': {
       title: `Jasa Website & Sistem Profesional Papua | Koteka Digital`,
@@ -12738,7 +12739,7 @@ function k(e, t, { blogPosts: n = [], faqs: r = [], portfolioItems: i = [] } = {
         '@id': `${D}/#organization`,
         name: `Koteka Digital`,
         url: D,
-        logo: `${D}/sistem-koteka-digital/img/koteka-digital-logo-jayapura-papua.png`,
+        logo: `${D}/img/koteka-digital-logo-jayapura-papua.png`,
         image: pe,
         description: `Jasa Pembuatan Website dan Sistem Profesional di Tanah Papua untuk UMKM, sekolah, instansi dan bisnis lokal. Konsultasi Koteka Digital Jayapura.`,
         telephone: `+62-852-1055-9404`,
@@ -13004,7 +13005,7 @@ function j({ minHeight: e = 320 }) {
 function De() {
   const [workspaceRevision, setWorkspaceRevision] = (0,d.useState)(0);
   (0,d.useEffect)(()=>window.KotekaWorkspace.subscribe(()=>setWorkspaceRevision(v=>v+1)),[]);
-  let [e, t] = (0, d.useState)(() => window.location.pathname.replace(/^\/sistem-koteka-digital(?=\/|$)/, ``).replace(/\/$/, ``) || `/`),
+  let [e, t] = (0, d.useState)(() => publicPath(window.location.pathname)),
     [n, r] = (0, d.useState)(null),
     [i, a] = (0, d.useState)(!1),
     o = (0, d.useRef)(null),
@@ -13049,10 +13050,10 @@ function De() {
     (0, d.useEffect)(() => {
       l &&
         window.location.pathname !== `/privacy-policy/index.html` &&
-        window.location.replace(`/sistem-koteka-digital/privacy-policy/index.html`);
+        window.location.replace(`/privacy-policy/index.html`);
     }, [l]),
     (0, d.useEffect)(() => {
-      let e = () => t(window.location.pathname.replace(/^\/sistem-koteka-digital(?=\/|$)/, ``).replace(/\/$/, ``) || `/`);
+      let e = () => t(publicPath(window.location.pathname));
       return (
         window.addEventListener(`popstate`, e),
         () => window.removeEventListener(`popstate`, e)

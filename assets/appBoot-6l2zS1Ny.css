@@ -607,7 +607,7 @@ html {
   background:
     linear-gradient(90deg, #041b2ffa 0%, #052744ed 35%, #073052a3 68%, #08365e7a 100%),
     radial-gradient(circle at 85% 18%, #ffcc003d, #0000 22%),
-    url(/sistem-koteka-digital/img/optimized/jasa-pembuatan-website-papua-koteka-digital.jpg) 72% / cover no-repeat;
+    url(/img/optimized/jasa-pembuatan-website-papua-koteka-digital.jpg) 72% / cover no-repeat;
   align-items: center;
   display: flex;
 }
@@ -822,7 +822,7 @@ html {
   background:
     linear-gradient(90deg, #041b2ffa 0%, #052744ed 35%, #0730529e 68%, #08365e7a 100%),
     radial-gradient(circle at 85% 18%, #ffcc003d, #0000 22%),
-    url(/sistem-koteka-digital/img/optimized/developer-720.jpg) 72% / cover no-repeat;
+    url(/img/optimized/developer-720.jpg) 72% / cover no-repeat;
   align-items: center;
   display: flex;
   position: relative;
@@ -2975,14 +2975,14 @@ main section {
   color: #fff;
   background:
     linear-gradient(90deg, #05264eeb 0%, #083463d6 42%, #0a3a6ab8 100%),
-    url(/sistem-koteka-digital/img/backgrounds/01-laptop-neon.webp) 50% / cover no-repeat;
+    url(/img/backgrounds/01-laptop-neon.webp) 50% / cover no-repeat;
 }
 .hero-section {
   background:
     radial-gradient(circle at 18% 16%, #ffcc0029, #0000 18%),
     radial-gradient(circle at 82% 18%, #ffffff14, #0000 22%),
     linear-gradient(90deg, #05264eb3 0%, #08346394 42%, #0a3a6a7a 100%),
-    url(/sistem-koteka-digital/img/backgrounds/01-laptop-neon.webp) 50% / cover no-repeat;
+    url(/img/backgrounds/01-laptop-neon.webp) 50% / cover no-repeat;
   padding-bottom: 0;
   position: relative;
   overflow: hidden;
@@ -3418,7 +3418,7 @@ main section {
   color: #fff;
   background:
     linear-gradient(90deg, #05264eeb 0%, #083463d6 42%, #0a3a6ab8 100%),
-    url(/sistem-koteka-digital/img/backgrounds/01-laptop-neon.webp) 50% / cover no-repeat;
+    url(/img/backgrounds/01-laptop-neon.webp) 50% / cover no-repeat;
 }
 @media (width<=900px) {
   .hero-section,
@@ -3434,7 +3434,7 @@ main section {
       radial-gradient(circle at 18% 16%, #ffcc0029, #0000 18%),
       radial-gradient(circle at 82% 18%, #ffffff14, #0000 22%),
       linear-gradient(90deg, #05264eeb 0%, #083463d6 42%, #0a3a6ab8 100%),
-      url(/sistem-koteka-digital/img/backgrounds/01-laptop-neon.webp) 50% / cover no-repeat;
+      url(/img/backgrounds/01-laptop-neon.webp) 50% / cover no-repeat;
   }
   .services-section,
   .portfolio-section,
@@ -7350,7 +7350,7 @@ main section {
   background:
     linear-gradient(90deg, #041b2ffa 0%, #052744ed 35%, #0730529e 68%, #08365e7a 100%),
     radial-gradient(circle at 88% 18%, #fc03, #0000 22%),
-    url(/sistem-koteka-digital/img/optimized/developer-720.jpg) 72% / cover no-repeat;
+    url(/img/optimized/developer-720.jpg) 72% / cover no-repeat;
   align-items: center;
   padding: clamp(4.75rem, 9vw, 7rem) 0 clamp(3.5rem, 7vw, 5.5rem);
   display: flex;
@@ -7506,7 +7506,7 @@ main section {
   .route-portfolio-page .route-page-intro {
     background-image:
       linear-gradient(#041b2feb 0%, #052744d1 48%, #073052bd 100%),
-      url(/sistem-koteka-digital/img/optimized/developer-480.jpg);
+      url(/img/optimized/developer-480.jpg);
     background-position: 50%;
     background-size: cover;
   }
@@ -10525,7 +10525,7 @@ main section {
   .route-blog-page .route-page-intro {
     background-image:
       linear-gradient(#041b2feb 0%, #052744d1 48%, #073052bd 100%),
-      url(/sistem-koteka-digital/img/optimized/developer-480.jpg);
+      url(/img/optimized/developer-480.jpg);
     background-position: 50%;
     background-size: cover;
   }
