@@ -33,3 +33,5 @@ Thumbs.db
 # Build cache
 .cache/
 coverage/
+
+*.backup
