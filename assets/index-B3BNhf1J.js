@@ -43,7 +43,7 @@ const __vite__mapDeps = (
 })();
 var e = `modulepreload`,
   t = function (e) {
-    return `/` + e;
+    return new URL(`../${e}`, import.meta.url).href;
   },
   n = {},
   r = function (r, i, a) {

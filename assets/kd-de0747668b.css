@@ -45,16 +45,16 @@
   --kd-border-dark: rgba(255, 255, 255, .12);
   --kd-shadow-card: 0 18px 42px rgba(4, 27, 46, .10);
   --kd-shadow-card-dark: 0 18px 42px rgba(0, 0, 0, .20);
-  --kd-bg-home: url("/img/backgrounds/01-laptop-neon.webp");
-  --kd-bg-bridge: url("/img/backgrounds/02-keyboard-html-neon.webp");
-  --kd-bg-about: url("/img/backgrounds/03-coding-keyboard-hands.webp");
-  --kd-bg-services: url("/img/backgrounds/04-computer-code-blue.webp");
-  --kd-bg-pricing: url("/img/backgrounds/05-keyboard-mouse-neon.webp");
-  --kd-bg-portfolio: url("/img/backgrounds/07-keyboard-html-purple.webp");
-  --kd-bg-blog: url("/img/backgrounds/08-laptop-ui-illustration.webp");
-  --kd-bg-testimonial: url("/img/backgrounds/09-laptop-analytics-purple.webp");
-  --kd-bg-faq: url("/img/backgrounds/10-html-code-concept.webp");
-  --kd-bg-contact: url("/img/backgrounds/11-programming-laptop-purple.webp");
+  --kd-bg-home: url("../img/backgrounds/01-laptop-neon.webp");
+  --kd-bg-bridge: url("../img/backgrounds/02-keyboard-html-neon.webp");
+  --kd-bg-about: url("../img/backgrounds/03-coding-keyboard-hands.webp");
+  --kd-bg-services: url("../img/backgrounds/04-computer-code-blue.webp");
+  --kd-bg-pricing: url("../img/backgrounds/05-keyboard-mouse-neon.webp");
+  --kd-bg-portfolio: url("../img/backgrounds/07-keyboard-html-purple.webp");
+  --kd-bg-blog: url("../img/backgrounds/08-laptop-ui-illustration.webp");
+  --kd-bg-testimonial: url("../img/backgrounds/09-laptop-analytics-purple.webp");
+  --kd-bg-faq: url("../img/backgrounds/10-html-code-concept.webp");
+  --kd-bg-contact: url("../img/backgrounds/11-programming-laptop-purple.webp");
   --kd-overlay-dark: linear-gradient(135deg, rgba(12,42,65,.88), rgba(18,67,101,.83));
   --kd-overlay-dark-soft: linear-gradient(135deg, rgba(12,42,65,.84), rgba(22,73,108,.78));
   --kd-overlay-light: linear-gradient(135deg, rgba(248,251,254,.94), rgba(239,246,251,.91));
@@ -319,7 +319,7 @@ main section:not(.hero-section),
     radial-gradient(circle at 14% 20%, rgba(255, 205, 52, .19), transparent 22%),
     radial-gradient(circle at 86% 16%, rgba(72, 151, 255, .18), transparent 25%),
     linear-gradient(98deg, rgba(3, 17, 31, .92), rgba(7, 48, 79, .84) 48%, rgba(5, 42, 72, .69)),
-    url("/img/backgrounds/01-laptop-neon.webp") center / cover no-repeat !important;
+    url("../img/backgrounds/01-laptop-neon.webp") center / cover no-repeat !important;
   position: relative;
   overflow: clip !important;
 }
