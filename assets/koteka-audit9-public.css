@@ -34,3 +34,7 @@
 .contact-form .form-status.warning{color:#ffe49b;background:#59461b;border:1px solid #ba943e;border-radius:12px;padding:12px 14px;line-height:1.7}
 .contact-form .form-status.success{color:#bff4d5;background:#123e32;border:1px solid #428867;border-radius:12px;padding:12px 14px;line-height:1.7}
 .contact-form .form-status.error{color:#ffd1d7;background:#502635;border:1px solid #b16a7c;border-radius:12px;padding:12px 14px;line-height:1.7}
+/* Status text must stay readable against the public card's global paragraph styles. */
+#root .contact-form .form-status.success{color:#14532d!important;background:#f0fdf4!important;border-color:#86b89a}
+#root .contact-form .form-status.warning{color:#713f12!important;background:#fffbeb!important;border-color:#d6b86b}
+#root .contact-form .form-status.error{color:#881337!important;background:#fff1f2!important;border-color:#e4a0ae}

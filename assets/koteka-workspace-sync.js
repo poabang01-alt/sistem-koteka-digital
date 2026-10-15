@@ -65,3 +65,76 @@
     else startTracking();
   }
 })();
+
+/* Loopback-only consultation simulation for static previews without an API.
+   Real server responses remain authoritative; an ambiguous failure is never retried locally. */
+(() => {
+  'use strict';
+  if (!window.location || window.KotekaConsultation) return;
+  const localPreview = ['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname);
+  const key = 'koteka.consultation.demo.v1';
+  const unavailable = new Set();
+  const reply = (status, value) => new Response(JSON.stringify(value), {
+    status, headers: {'Content-Type': 'application/json', 'Cache-Control': 'no-store'}
+  });
+  const read = () => {
+    const value = JSON.parse(localStorage.getItem(key) || '[]');
+    if (!Array.isArray(value)) throw Error('Invalid simulation data');
+    return value;
+  };
+  const clean = (value, max) => String(value ?? '').trim().slice(0, max);
+  function simulate(path, options) {
+    try {
+      const items = read(), method = (options.method || 'GET').toUpperCase();
+      if (path === '/api/inbox' && method === 'GET') return reply(200, {
+        items, unread: items.filter(item => !item.read).length, simulation: true,
+        integrations: {email: false, whatsapp: false}
+      });
+      const input = JSON.parse(options.body || '{}');
+      if (path === '/api/inbox' && method === 'PATCH') {
+        const item = items.find(item => item.id === input.id);
+        if (!item) return reply(404, {error: 'Pesan simulasi tidak ditemukan.'});
+        item.read = true;
+        localStorage.setItem(key, JSON.stringify(items));
+        return reply(200, {ok: true, id: item.id, simulation: true});
+      }
+      if (path !== '/api/leads' || method !== 'POST') return reply(405, {error: 'Metode tidak didukung.'});
+      const lead = {id: crypto.randomUUID(), date: new Date().toISOString(),
+        nama: clean(input.nama, 90), namaBisnis: clean(input.namaBisnis, 120),
+        wa: clean(input.whatsapp || input.wa, 32).replace(/\D/g, '').replace(/^0/, '62'),
+        email: clean(input.email, 120), jenisWebsite: clean(input.jenisWebsite, 90),
+        anggaran: clean(input.anggaran, 90), targetSelesai: clean(input.targetSelesai, 90),
+        pesan: clean(input.pesan || input.message, 2500), kirimVia: clean(input.kirimVia, 30),
+        read: false, simulation: true};
+      if (input.persetujuan !== true || !['email', 'whatsapp'].includes(lead.kirimVia) ||
+          lead.nama.length < 3 || !lead.namaBisnis || !/^62\d{9,13}$/.test(lead.wa) ||
+          lead.pesan.length < 10 || !lead.jenisWebsite || !lead.anggaran || !lead.targetSelesai ||
+          (lead.kirimVia === 'email' && !lead.email) ||
+          (lead.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email))) {
+        return reply(422, {error: 'Data konsultasi tidak lengkap atau tidak valid.'});
+      }
+      lead.delivery = {email: 'not_requested', whatsapp: 'not_requested', [lead.kirimVia]: 'simulated'};
+      items.unshift(lead);
+      // A single durable write is the acknowledgement for both inbox and simulated delivery.
+      localStorage.setItem(key, JSON.stringify(items));
+      return reply(201, {ok: true, stored: true, id: lead.id, simulation: true, delivery: lead.delivery});
+    } catch {
+      return reply(507, {error: 'Simulasi belum tersimpan. Penyimpanan browser penuh, diblokir, atau tidak dapat dibaca. Data form tetap ada.'});
+    }
+  }
+  async function request(path, options = {}) {
+    if (!localPreview || !['/api/leads', '/api/inbox'].includes(path)) return fetch(path, options);
+    if (!unavailable.has(path)) {
+      const response = await fetch(path, options);
+      const json = (response.headers.get('content-type') || '').includes('application/json');
+      if (![404, 405, 501, 503].includes(response.status) && !(response.ok && !json)) return response;
+      unavailable.add(path);
+    }
+    // Serialize local writes across tabs when the browser supports Web Locks.
+    if (typeof navigator !== 'undefined' && navigator.locks?.request) {
+      return navigator.locks.request(key, () => simulate(path, options));
+    }
+    return simulate(path, options);
+  }
+  window.KotekaConsultation = {request, localPreview};
+})();

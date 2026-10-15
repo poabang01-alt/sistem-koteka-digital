@@ -38,6 +38,14 @@ test('stored consultation with provider failure shows a warning, not a send conf
  assert.equal(result.navigations.length,0);
  assert.equal(result.resets.length,1);
 });
+
+test('local simulation reports browser storage and never claims real delivery',async()=>{
+ const result=await submit({data:{stored:true,simulation:true,delivery:{email:'simulated'}}});
+ assert.equal(result.states.at(-1).type,'success');
+ assert.match(result.states.at(-1).message,/simulasi/i);
+ assert.match(result.states.at(-1).message,/browser/i);
+ assert.equal(result.resets.length,1);
+});
 test('unconfigured backend keeps the form and does not silently open WhatsApp',async()=>{
  const result=await submit({status:503,data:{error:'Pengiriman otomatis belum dikonfigurasi.'},channel:'whatsapp'});
  assert.equal(result.states.at(-1).type,'error');
@@ -88,7 +96,7 @@ async function login(status,body,{email='admin@kotekadigital.com',password='Kote
  const messages=[],sessions=[];let authenticated=false;
  const button={disabled:false},error={hidden:true,textContent:''};
  const nodes={'#loginEmail':{value:email},'#loginPassword':{value:password},'#loginError':error};
- const context=vm.createContext({console,AbortController,setTimeout,clearTimeout,AUTH:'session',DEMO_USER:'admin@kotekadigital.com',DEMO_PASS:'KotekaDemo@2026',inboxKnownIds:null,$:q=>nodes[q],fetch:async()=>new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json'}}),sessionStorage:{setItem:(k,v)=>sessions.push([k,v])},writeLog(){},authView(){authenticated=true;},toast:message=>messages.push(message)});
+ const context=vm.createContext({console,AbortController,setTimeout,clearTimeout,window:{},AUTH:'session',DEMO_USER:'admin@kotekadigital.com',DEMO_PASS:'KotekaDemo@2026',inboxKnownIds:null,$:q=>nodes[q],fetch:async()=>new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json'}}),sessionStorage:{setItem:(k,v)=>sessions.push([k,v])},writeLog(){},authView(){authenticated=true;},toast:message=>messages.push(message)});
  vm.runInContext('globalThis.loginHandler='+handler,context);
  await context.loginHandler({preventDefault(){},target:{querySelector:()=>button}});
  return {authenticated,messages,sessions,error,button};
