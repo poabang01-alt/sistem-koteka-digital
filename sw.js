@@ -1,6 +1,6 @@
 /* Koteka Digital: bounded, same-origin, static-public-content PWA cache. */
 'use strict';
-const VERSION = 'v11-audit9';
+const VERSION = 'v12-github-pages';
 const PREFIX = 'koteka-digital-';
 const SHELL_CACHE = `${PREFIX}shell-${VERSION}`;
 const STATIC_CACHE = `${PREFIX}static-${VERSION}`;
@@ -8,15 +8,23 @@ const MEDIA_CACHE = `${PREFIX}media-${VERSION}`;
 const NAV_LIMIT = 22;
 const STATIC_LIMIT = 70;
 const MEDIA_LIMIT = 65;
+const BASE = '/sistem-koteka-digital';
+const BASE = '/sistem-koteka-digital';
 const SHELL_URLS = [
-  '/', '/offline.html', '/manifest.webmanifest',
-  '/assets/index-B3BNhf1J.js', '/assets/kd-de0747668b.css',
-  '/assets/kd-37f189b118.js', '/assets/kd-icons-loader-20261010.js',
-  '/assets/kd-offline-20261010.js', '/assets/koteka-audit9-public.css',
-  '/assets/koteka-audit9-public.js',
-  '/img/koteka-app-icon-192.png', '/img/koteka-app-icon-512.png'
+  `${BASE}/`,
+  `${BASE}/offline.html`,
+  `${BASE}/manifest.webmanifest`,
+  `${BASE}/assets/index-B3BNhf1J.js`,
+  `${BASE}/assets/kd-de0747668b.css`,
+  `${BASE}/assets/kd-37f189b118.js`,
+  `${BASE}/assets/kd-icons-loader-20261010.js`,
+  `${BASE}/assets/kd-offline-20261010.js`,
+  `${BASE}/assets/koteka-audit9-public.css`,
+  `${BASE}/assets/koteka-audit9-public.js`,
+  `${BASE}/img/koteka-app-icon-192.png`,
+  `${BASE}/img/koteka-app-icon-512.png`
 ];
-const isPublicPage = (path) => path === '/' ||
+const isPublicPage = (path) => path === ${BASE}/ ||
   /^\/(?:layanan|portofolio|blog|privacy-policy)\/$/.test(path) ||
   /^\/blog\/[a-z0-9-]+\/$/.test(path);
 const isCacheable = (response) => response && response.ok &&
@@ -44,7 +52,7 @@ self.addEventListener('activate', (event) => {
 });
 
 const navigation = async (request) => {
-  const path = new URL(request.url).pathname;
+  const path = new URL(request.url).pathname.replace(/^\/sistem-koteka-digital(?=\/|$)/, '') || '/';
   try {
     const response = await fetch(request);
     if (isPublicPage(path) && isCacheable(response)) {
@@ -54,7 +62,7 @@ const navigation = async (request) => {
     }
     return response;
   } catch (_) {
-    return (await caches.match(request)) || (await caches.match('/offline.html')) || Response.error();
+    return (await caches.match(request)) || (await caches.match(${BASE}/offline.html)) || Response.error();
   }
 };
 
@@ -98,9 +106,9 @@ self.addEventListener('fetch', (event) => {
   if (/^\/(?:api|admin|auth|login|dashboard)(?:\/|$)/.test(url.pathname)) return;
   if (request.mode === 'navigate') {
     event.respondWith(navigation(request));
-  } else if (/\.(?:js|css)$/.test(url.pathname) && url.pathname.startsWith('/assets/')) {
+  } else if (/\.(?:js|css)$/.test(url.pathname) && url.pathname.startsWith(${BASE}/assets/)) {
     event.respondWith(staticAsset(request));
-  } else if (/^\/(?:assets|img|downloads)\//.test(url.pathname)) {
+  } else if (/^\/sistem-koteka-digital\/(?:assets|img|downloads)\//.test(url.pathname)) {
     event.respondWith(mediaAsset(request, event));
   }
 });

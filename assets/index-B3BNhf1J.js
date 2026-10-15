@@ -117,7 +117,7 @@ function a() {
   window.addEventListener(
     `load`,
     () => {
-      navigator.serviceWorker.register(`/sw.js`, { scope: `/` }).catch(() => {});
+      navigator.serviceWorker.register(`/sistem-koteka-digital/sw.js`, { scope: `/sistem-koteka-digital/` }).catch(() => {});
     },
     { once: !0 }
   ),
